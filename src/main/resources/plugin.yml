@@ -1,5 +1,5 @@
 name: Announcer
-main: me.declanmc96.announcer.announcer
+main: ${project.groupId}.${project.artifactId}.Announcer
 version: 1.6.1
 description: Automatically Announce tips and news!
 authors:

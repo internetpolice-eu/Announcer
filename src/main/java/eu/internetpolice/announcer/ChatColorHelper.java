@@ -1,8 +1,8 @@
-package me.declanmc96.announcer;
+package eu.internetpolice.announcer;
 
-import org.bukkit.*;
+import org.bukkit.ChatColor;
 
-public class chatColorHelper
+public class ChatColorHelper
 {
     public static String replaceColorCodes(String message) {
         ChatColor[] arrayOfChatColor;

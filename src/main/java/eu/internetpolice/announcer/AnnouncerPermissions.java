@@ -1,6 +1,6 @@
-package me.declanmc96.announcer;
+package eu.internetpolice.announcer;
 
-public final class announcerPermissions
+public final class AnnouncerPermissions
 {
     public static final String RECEIVER = "announcer.receiver";
     public static final String ADD = "announcer.add";

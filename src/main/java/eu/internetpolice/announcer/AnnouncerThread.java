@@ -1,14 +1,14 @@
-package me.declanmc96.announcer;
+package eu.internetpolice.announcer;
 
-import java.util.*;
+import java.util.Random;
 
-public class announcerThread extends Thread
+public class AnnouncerThread extends Thread
 {
     private final Random randomGenerator;
-    private final announcer plugin;
+    private final Announcer plugin;
     private int lastAnnouncement;
     
-    public announcerThread(final announcer plugin) {
+    public AnnouncerThread(final Announcer plugin) {
         this.randomGenerator = new Random();
         this.lastAnnouncement = 0;
         this.plugin = plugin;
