@@ -2,19 +2,14 @@ name: Announcer
 main: ${project.groupId}.${project.artifactId}.Announcer
 version: 1.6.1
 description: Automatically Announce tips and news!
-authors:
- - 'declanmc96'
+author: declanmc96
+api-version: 1.15
 
 commands:
   announce:
     description: Managing Announcements
     usage: /<command> help - Displays the help for Announcer
-  announcer:
-    description: Alias for /announce
-    usage: /<command> help - Displays the help for Announcer
-  acc:
-    description: Alias for /announce
-    usage: /<command> help - Displays the help for Announcer
+    aliases: [announce, acc]
 
 permissions:
     announcer.*:

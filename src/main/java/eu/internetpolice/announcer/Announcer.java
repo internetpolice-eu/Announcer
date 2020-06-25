@@ -1,15 +1,12 @@
 package eu.internetpolice.announcer;
 
-
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
-import java.io.File;
 import java.util.List;
 
 public class Announcer extends JavaPlugin {
     protected List<String> announcementMessages;
-    protected String announcementPrefix;
     protected long announcementInterval;
     protected boolean enabled;
     protected boolean random;
@@ -21,16 +18,12 @@ public class Announcer extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        if (!new File(getDataFolder(), "config.yml").exists()) {
-            saveDefaultConfig();
-        }
-        this.reloadConfiguration();
+        saveDefaultConfig();
+        reloadConfiguration();
         final BukkitScheduler scheduler = getServer().getScheduler();
         scheduler.scheduleSyncRepeatingTask(this, announcerThread, announcementInterval * 20L, announcementInterval * 20L);
         final AnnouncerCommandExecutor announcerCommandExecutor = new AnnouncerCommandExecutor(this);
-        this.getCommand("announce").setExecutor(announcerCommandExecutor);
-        this.getCommand("announcer").setExecutor(announcerCommandExecutor);
-        this.getCommand("acc").setExecutor(announcerCommandExecutor);
+        getCommand("announce").setExecutor(announcerCommandExecutor);
     }
 
     @Override
@@ -59,7 +52,6 @@ public class Announcer extends JavaPlugin {
     public void saveConfiguration() {
         getConfig().set("announcement.messages", announcementMessages);
         getConfig().set("announcement.interval", announcementInterval);
-        getConfig().set("announcement.prefix", announcementPrefix);
         getConfig().set("announcement.enabled", enabled);
         getConfig().set("announcement.random", random);
         saveConfig();
@@ -67,7 +59,6 @@ public class Announcer extends JavaPlugin {
     
     public void reloadConfiguration() {
         reloadConfig();
-        announcementPrefix = getConfig().getString("announcement.prefix", "&c[Announcement] ");
         announcementMessages = getConfig().getStringList("announcement.messages");
         announcementInterval = getConfig().getInt("announcement.interval", 1000);
         enabled = getConfig().getBoolean("announcement.enabled", true);
@@ -75,8 +66,8 @@ public class Announcer extends JavaPlugin {
     }
     
     public void addAnnouncement(final String message) {
-        this.announcementMessages.add(message);
-        this.saveConfiguration();
+        announcementMessages.add(message);
+        saveConfiguration();
     }
     
     public String getAnnouncement(final int index) {
